@@ -35,19 +35,19 @@ RUN conda install -c anaconda jupyter && \
     conda install numpy && \
     conda install -c conda-forge tqdm && \
     conda install pytorch torchvision -c soumith && \
-    conda install pillow=6.1 && \
-    conda install torch-optimizer
+    conda install pillow=6.1
+RUN pip install torch-optimizer
 
 RUN wget https://github.com/cdr/code-server/releases/download/2.1698/code-server2.1698-vsc1.41.1-linux-x86_64.tar.gz && \
     tar -xzvf code-server2.1698-vsc1.41.1-linux-x86_64.tar.gz && \
     chmod +x code-server2.1698-vsc1.41.1-linux-x86_64/code-server && \
-    rm code-server2.1698-vsc1.41.1-linux-x86_64
+    rm code-server2.1698-vsc1.41.1-linux-x86_64.tar.gz
  
 # Copy
 COPY . /stylegan2-pytorch
 WORKDIR /stylegan2-pytorch
 
 # Start container in notebook mode
-CMD /code-server2.1692-vsc1.39.2-linux-x86_64/code-server --allow-http --no-auth --data-dir / & \
+CMD /code-server2.1698-vsc1.41.1-linux-x86_64/code-server --allow-http --no-auth --data-dir / & \
     jupyter-lab --ip="*" --no-browser --allow-root
 

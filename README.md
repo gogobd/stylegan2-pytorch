@@ -32,6 +32,10 @@ $ pip install stylegan2_pytorch
 $ stylegan2_pytorch --data /path/to/images
 ```
 
+```bash
+$ docker run --gpus all -it --ipc=host -p 8080:8080 -p 8097:8097 -p 8888:8888 -e PASSWORD='yourpassword' stylegan2-pytorch
+```
+
 That's it. Sample images will be saved to `results/default` and models will be saved periodically to `models/default`.
 
 ## Advanced Use
